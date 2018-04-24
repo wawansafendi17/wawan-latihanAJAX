@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<title>Latihan AJAX1.html</title>
+<head>
+<script> function loadXMLDoc(){
+var xmlhttp;
+if(window.XMLHttpRequest){
+
+	//The XMLHttpRequest Object Semua browser modern mendukung objek 
+	//XMLHttpRequest (IE5 dan IE6 menggunakan ActiveXObject)
+	xmlhttp= new XMLHttpRequest();
+	}else{
+	
+	//Sintaks untuk menciptakan objek XMLHttpRequest
+	xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	
+	xmlhttp.onreadystatechange=function(){
+	if(xmlhttp.readyState==4 && xmlhttp.status==200){
+	document.getElementById("isi").innerHTML=xmlhttp.responseText;
+	}}
+	
+	//Untuk mengirim permintaan ke server, kita menggunakan open () dan send () metode dari objek XMLHttpRequest
+	xmlhttp.open("GET","text1.xml",true);
+	xmlhttp.send();
+}
+	
+</script>
+</head>
+<body>
+<div id="isi">
+<h2>Kalimat Utama Sebelum Diubah</h2></div>
+<button type="button" onclick="loadXMLDoc()">Ubah Tulisan Diatas</button>
+</body>
+</html>
